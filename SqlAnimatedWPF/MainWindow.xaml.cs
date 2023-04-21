@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,11 +21,18 @@ namespace SqlAnimatedWPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        MainViewModel viewModel;
         public MainWindow()
         {
             InitializeComponent();
 
-            DataContext = new MainViewModel();
+            viewModel = new MainViewModel();
+
+            test.ItemsSource = viewModel.SelectAll();
+        }
+        public void OnWindowClosing(object sender, CancelEventArgs e)
+        {
+            viewModel.Close();  
         }
     }
 }

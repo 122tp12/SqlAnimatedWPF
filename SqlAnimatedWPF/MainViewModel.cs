@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SqlAnimatedWPF.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,15 @@ namespace SqlAnimatedWPF
         public MainViewModel()
         {
             model = new SqLiteModel();
+            model.Insert("app", "name", "comment");
+        }
+        public List<CommentDto> SelectAll()
+        {
+            return model.selectAll();
+        }
+        public void Close()
+        {
+            model.Close();
         }
     }
 }
