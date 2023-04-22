@@ -13,6 +13,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -35,29 +36,61 @@ namespace SqlAnimatedWPF
         }
         private void onClickInsert(object sender, RoutedEventArgs e)
         {
+            if (appNameInsert.Text == "" || userNameInsert.Text == "" || commentInsert.Text == "")
+            {
+                showNotification("Fields must be fieled", false);
+                return;
+            }
+            
             int res = _viewModel.Insert(appNameInsert.Text, userNameInsert.Text, commentInsert.Text);
             if (res > 0)
             {
                 update();
+                showNotification("Inserted", true);
+            }
+            else
+            {
+                showNotification("Error", false);
             }
         }
         private void onClickUpdate(object sender, RoutedEventArgs e)
         {
+            if (applicationNameUpdate.Text == "" || userNameUpdate.Text == "" || commentUpdate.Text == "") { 
+                showNotification("Fields must be fieled", false);
+                return;
+            }
+
             int res = _viewModel.Update(int.Parse(idUpdate.Text), applicationNameUpdate.Text, userNameUpdate.Text, commentUpdate.Text);
             if (res > 0)
             {
                 update();
+                showNotification("Updated", true);
+            }
+            else
+            {
+                showNotification("Error", false);
             }
         }
         private void onClickDelete(object sender, RoutedEventArgs e)
         {
             if (list.SelectedItems.Count == 0)
+            {
+                showNotification("You must select a comment", false);
                 return;
-            
-            int res = _viewModel.Delete(((CommentDto)list.SelectedItems[0]).Id);
-            if(res > 0)
+            }
+
+            int res = 0;
+            for(int i=0;i<list.SelectedItems.Count ;i++ )
+                res += _viewModel.Delete(((CommentDto)list.SelectedItems[i]).Id);
+
+            if (res > 0)
             {
                 update();
+                showNotification("Success. "+res+" field(s) deleted", true);
+            }
+            else
+            {
+                showNotification("Error", false);
             }
         }
 
@@ -112,6 +145,58 @@ namespace SqlAnimatedWPF
         private void update()
         {
             list.ItemsSource = _viewModel.SelectAll();
+        }
+        private void showNotification(string text, bool goodNotifivation)
+        {
+            notification.Content = text;
+            notification.Visibility = Visibility.Visible;
+
+            if (goodNotifivation)
+            {
+                SolidColorBrush mySolidColorBrush = new SolidColorBrush();
+                mySolidColorBrush.Color = Color.FromArgb(127, 126, 245, 128);
+                notification.Background = mySolidColorBrush;
+            }
+            else
+            {
+                SolidColorBrush mySolidColorBrush = new SolidColorBrush();
+                mySolidColorBrush.Color = Color.FromArgb(127, 247, 89, 89);
+                notification.Background = mySolidColorBrush;
+            }
+
+            var opacity = new DoubleAnimation
+            {
+                From = 0,
+                To = 1,
+                Duration = TimeSpan.FromSeconds(0.5),
+                AccelerationRatio = 1
+            };
+            var margin = new ThicknessAnimation
+            {
+                
+                From = new Thickness(15, 25, 15, 15),
+                To = new Thickness(15, 15, 15, 15),
+                Duration = TimeSpan.FromSeconds(0.5),
+                AccelerationRatio = 1
+            };
+
+            notification.BeginAnimation(UIElement.OpacityProperty, opacity);
+            notification.BeginAnimation(Label.MarginProperty, margin);
+        }
+
+        private void notification_MouseEnter(object sender, MouseEventArgs e)
+        {
+            var opacity = new DoubleAnimation
+            {
+                From = 1,
+                To = 0,
+                Duration = TimeSpan.FromSeconds(0.5),
+                AccelerationRatio = 1
+            };
+            opacity.Completed += (o, e) => notification.Visibility = Visibility.Hidden;
+
+            notification.BeginAnimation(UIElement.OpacityProperty, opacity);
+
         }
     }
 }
