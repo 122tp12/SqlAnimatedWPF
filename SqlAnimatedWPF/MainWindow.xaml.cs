@@ -24,18 +24,18 @@ namespace SqlAnimatedWPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        MainViewModel viewModel;
+        private MainViewModel _viewModel;
         public MainWindow()
         {
             InitializeComponent();
 
-            viewModel = new MainViewModel();
+            _viewModel = new MainViewModel();
 
-            list.ItemsSource = viewModel.SelectAll();
+            list.ItemsSource = _viewModel.SelectAll();
         }
         private void onClickInsert(object sender, RoutedEventArgs e)
         {
-            int res = viewModel.Insert(new CommentDto(appNameInsert.Text, userNameInsert.Text, commentInsert.Text));
+            int res = _viewModel.Insert(appNameInsert.Text, userNameInsert.Text, commentInsert.Text);
             if (res > 0)
             {
                 update();
@@ -43,7 +43,7 @@ namespace SqlAnimatedWPF
         }
         private void onClickUpdate(object sender, RoutedEventArgs e)
         {
-            int res = viewModel.Update(new CommentDto(int.Parse(idUpdate.Text), applicationNameUpdate.Text, userNameUpdate.Text, commentUpdate.Text));
+            int res = _viewModel.Update(int.Parse(idUpdate.Text), applicationNameUpdate.Text, userNameUpdate.Text, commentUpdate.Text);
             if (res > 0)
             {
                 update();
@@ -54,7 +54,7 @@ namespace SqlAnimatedWPF
             if (list.SelectedItems.Count == 0)
                 return;
             
-            int res = viewModel.Delete(((CommentDto)list.SelectedItems[0]).Id);
+            int res = _viewModel.Delete(((CommentDto)list.SelectedItems[0]).Id);
             if(res > 0)
             {
                 update();
@@ -111,7 +111,7 @@ namespace SqlAnimatedWPF
 
         private void update()
         {
-            list.ItemsSource = viewModel.SelectAll();
+            list.ItemsSource = _viewModel.SelectAll();
         }
     }
 }

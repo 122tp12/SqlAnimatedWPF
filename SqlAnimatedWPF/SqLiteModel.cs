@@ -51,10 +51,6 @@ namespace SqlAnimatedWPF
             SQLiteCommand command = new SQLiteCommand(sql, connection);
             return command.ExecuteNonQuery();
         }
-        public void Close()
-        {
-            connection.Close();
-        }
         ~SqLiteModel()
         {
             connection.Close();

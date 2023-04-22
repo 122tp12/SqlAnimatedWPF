@@ -65,6 +65,7 @@
 
                 <Button Name="updateButton" Grid.Row="4" Margin="10,0,0,0" FontSize="20" Content="Update" HorizontalAlignment="Left" VerticalAlignment="Center" Click="onClickUpdate" Height="30" Width="67" IsEnabled="False"/>
             </Grid>
+            <Label Name="notification" Grid.Row="2" Content="Failed" Background="#7FF75959" Margin="15" FontSize="22" HorizontalContentAlignment="Center"/>
         </Grid>
 
     </Grid>

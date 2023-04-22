@@ -4,36 +4,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace SqlAnimatedWPF
 {
     public class MainViewModel
     {
-        private SqLiteModel model;
+        private SqLiteModel _model;
         
         public MainViewModel()
         {
-            model = new SqLiteModel();
+            _model = new SqLiteModel();
         }
         public List<CommentDto> SelectAll()
         {
-            return model.SelectAll();
+            return _model.SelectAll();
         }
-        public int Insert(CommentDto insertObj)
+        public int Insert(string appName, string userName, string comment)
         {
-            return model.Insert(insertObj);
+            return _model.Insert(new CommentDto(appName, userName, comment));
         }
-        public int Update(CommentDto updateObj)
+        public int Update(int id, string appName, string userName, string comment)
         {
-            return model.Update(updateObj);
+            return _model.Update(new CommentDto(id, appName, userName, comment));
         }
         public int Delete(int id)
         {
-            return model.Delete(id);
-        }
-        public void Close()
-        {
-            model.Close();
+            return _model.Delete(id);
         }
     }
 }
