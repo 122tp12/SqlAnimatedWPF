@@ -153,15 +153,15 @@ namespace SqlAnimatedWPF
 
             if (goodNotifivation)
             {
-                SolidColorBrush mySolidColorBrush = new SolidColorBrush();
-                mySolidColorBrush.Color = Color.FromArgb(127, 126, 245, 128);
-                notification.Background = mySolidColorBrush;
+                SolidColorBrush backgroundBrush = new SolidColorBrush();
+                backgroundBrush.Color = Color.FromArgb(127, 189, 147, 249);
+                notification.Background = backgroundBrush;
             }
             else
             {
-                SolidColorBrush mySolidColorBrush = new SolidColorBrush();
-                mySolidColorBrush.Color = Color.FromArgb(127, 247, 89, 89);
-                notification.Background = mySolidColorBrush;
+                SolidColorBrush backgroundBrush = new SolidColorBrush();
+                backgroundBrush.Color = Color.FromArgb(255, 100, 33, 33);
+                notification.Background = backgroundBrush;
             }
 
             var opacity = new DoubleAnimation

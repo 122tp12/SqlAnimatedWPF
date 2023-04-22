@@ -6,70 +6,74 @@
         xmlns:local="clr-namespace:SqlAnimatedWPF"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <Grid Background="#FF282A36">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5*"/>
             <ColumnDefinition Width="6*"/>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0">
+        <Grid Grid.Column="0" Margin="10,10,10,10" Background="#FF44475A">
             <Grid.RowDefinitions>
-                <RowDefinition Height="5*"></RowDefinition>
+                <RowDefinition Height="10*"></RowDefinition>
                 <RowDefinition Height="1*"></RowDefinition>
             </Grid.RowDefinitions>
-            <ListBox Name="list" Grid.Row="0" Width="Auto" Margin="5,5,5,5" SelectionMode="Multiple"></ListBox>
-            <Button Grid.Row="1" FontSize="20" Content="Delete" VerticalAlignment="Top" Click="onClickDelete" Margin="266,0,10,0"/>
+            <ListBox Name="list" Grid.Row="0" Width="Auto" Margin="5,5,5,5" SelectionMode="Multiple" Background="#FFF8F8F2" Foreground="#FF282A36"/>
+            <Button FontSize="20" Grid.Row="1" Content="Delete" VerticalAlignment="Top" Click="onClickDelete" Grid.RowSpan="2" Background="#FFFFB86C" Foreground="#FF282A36" Margin="220,0,10,0"/>
         </Grid>
-        <Grid Width="Auto" Height="Auto" Grid.Column="1">
+        <Grid Width="Auto" Height="Auto" Grid.Column="1" Margin="10,10,10,10" Background="#FF44475A">
             <Grid.RowDefinitions>
                 <RowDefinition Height="2*"></RowDefinition>
                 <RowDefinition Height="3*"></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                </Grid.RowDefinitions>
-                <Label Grid.Row="0" Content="Application name" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top"/>
-                <TextBox Grid.Row="0" Name="appNameInsert" HorizontalAlignment="Center"  TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Margin="0,8,0,0"/>
-
-                <Label Grid.Row="1" Margin="5,5,0,0" Content="User name" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                <TextBox Grid.Row="1" Name="userNameInsert" HorizontalAlignment="Center"  TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Margin="0,8,0,0"/>
-
-                <Label Grid.Row="2" Margin="5,5,0,0" Content="Comment" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                <TextBox Grid.Row="2" Name="commentInsert" HorizontalAlignment="Center"  TextWrapping="Wrap" VerticalAlignment="Center" Width="200"/>
-
-                <Button Grid.Row="3" Margin="10,0,0,0" FontSize="20" Content="Insert" HorizontalAlignment="Left" VerticalAlignment="Center" Click="onClickInsert" Height="30" Width="72"/>
-            </Grid>
-            <Grid Grid.Row="1">
+            <Grid Grid.Row="0" Background="#FF6272A4" Margin="5,5,5,5" >
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="18*"/>
-                    <ColumnDefinition Width="91*"/>
+                    <ColumnDefinition Width="3*"></ColumnDefinition>
+                    <ColumnDefinition Width="8*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
-                <Label Grid.Row="0" Content="Id" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top"/>
-                <TextBox Grid.Row="0" Name="idUpdate" PreviewTextInput="NumberValidationTextBox" HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Margin="46,8,0,0" TextChanged="updateBtn_TextChanged" Grid.Column="1"/>
+                <Label Grid.Row="0" Grid.Column="0" Content="Application name" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" Foreground="#FF282A36"/>
+                <TextBox Grid.Row="0" Grid.Column="1" Name="appNameInsert" HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top" Width="283" Margin="2,9,0,0" Background="#FFF8F8F2" Foreground="#FF282A36"/>
 
-                <Label Grid.Row="1" Content="Application name" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-                <TextBox Grid.Row="1" Name="applicationNameUpdate" HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Margin="46,8,0,0" IsEnabled="False" Grid.Column="1"/>
+                <Label Grid.Row="1" Grid.Column="0" Margin="5,5,0,0" Content="User name" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FF282A36"/>
+                <TextBox Grid.Row="1" Grid.Column="1" Name="userNameInsert" HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top" Width="283" Margin="2,9,0,0" Background="#FFF8F8F2" Foreground="#FF282A36"/>
 
-                <Label Grid.Row="2" Content="User name" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-                <TextBox Grid.Row="2" Name="userNameUpdate" HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Margin="46,8,0,0" IsEnabled="False" Grid.Column="1"/>
+                <Label Grid.Row="2" Grid.Column="0" Margin="5,5,0,0" Content="Comment" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FF282A36"/>
+                <TextBox Grid.Row="2" Grid.Column="1" Name="commentInsert" HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top" Width="283" Background="#FFF8F8F2" Margin="2,9,0,0" Foreground="#FF282A36"/>
 
-                <Label Grid.Row="3" Content="Comment" HorizontalAlignment="Center" Margin="0,5,0,0" VerticalAlignment="Top"/>
-                <TextBox Grid.Row="3" Name="commentUpdate" HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Margin="46,8,0,0" IsEnabled="False" Grid.Column="1"/>
-
-                <Button Name="updateButton" Grid.Row="4" Margin="10,0,0,0" FontSize="20" Content="Update" HorizontalAlignment="Left" VerticalAlignment="Center" Click="onClickUpdate" Height="30" Width="81" IsEnabled="False" Grid.ColumnSpan="2"/>
+                <Button Grid.Row="3" Grid.Column="1" FontSize="14" Content="Insert" HorizontalAlignment="Left" VerticalAlignment="Center" Click="onClickInsert" Height="25" Width="59" Background="#FFFFB86C" Foreground="#FF282A36" Margin="2,0,0,0"/>
             </Grid>
-            <Label Name="notification" Grid.Row="2" Content="Failed" Background="#7F7EF580" Margin="15" FontSize="22" HorizontalContentAlignment="Center" MouseEnter="notification_MouseEnter"/>
+            <Grid Grid.Row="1" Background="#FF6272A4" Margin="5,5,5,5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"></ColumnDefinition>
+                    <ColumnDefinition Width="8*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5*"></RowDefinition>
+                    <RowDefinition Height="5*"></RowDefinition>
+                    <RowDefinition Height="5*"></RowDefinition>
+                    <RowDefinition Height="5*"></RowDefinition>
+                    <RowDefinition Height="4*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Content="Id" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" Foreground="#FF282A36"/>
+                <TextBox Grid.Row="0" Name="idUpdate" PreviewTextInput="NumberValidationTextBox" HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top" Width="283" Margin="2,8,0,0" TextChanged="updateBtn_TextChanged" Grid.Column="1" Background="#FFF8F8F2" Foreground="#FF282A36" FontSize="14"/>
+
+                <Label Grid.Row="1" Grid.Column="0" Content="Application name" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Foreground="#FF282A36"/>
+                <TextBox Grid.Row="1" Name="applicationNameUpdate" HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top" Width="283" Margin="2,8,0,0" IsEnabled="False" Grid.Column="1" Background="#FFF8F8F2" Foreground="#FF282A36" FontSize="14"/>
+
+                <Label Grid.Row="2" Grid.Column="0" Content="User name" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Foreground="#FF282A36"/>
+                <TextBox Grid.Row="2" Name="userNameUpdate" HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top" Width="283" Margin="2,8,0,0" IsEnabled="False" Grid.Column="1" Background="#FFF8F8F2" Foreground="#FF282A36" FontSize="14"/>
+
+                <Label Grid.Row="3" Grid.Column="0" Content="Comment" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" Foreground="#FF282A36"/>
+                <TextBox Grid.Row="3" Name="commentUpdate" HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top" Width="283" Margin="2,8,0,0" IsEnabled="False" Grid.Column="1" Background="#FFF8F8F2" Foreground="#FF282A36" FontSize="14"/>
+
+                <Button Name="updateButton" Grid.Row="4" Margin="2,0,0,0" FontSize="14" Content="Update" HorizontalAlignment="Left" VerticalAlignment="Center" Click="onClickUpdate" Height="25" Width="75" IsEnabled="False" Grid.Column="1" Background="#FFFFB86C" Foreground="#FF282A36"/>
+            </Grid>
+            <Label Name="notification" Grid.Row="2" Foreground="#FF282A36" Content="Failed" Margin="15" FontSize="22" HorizontalContentAlignment="Center" MouseEnter="notification_MouseEnter" Visibility="Hidden" Background="#FFF8F8F2"/>
         </Grid>
 
     </Grid>
