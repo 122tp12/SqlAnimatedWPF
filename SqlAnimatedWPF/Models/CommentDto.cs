@@ -1,4 +1,8 @@
-﻿using System.Security.Cryptography;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace SqlAnimatedWPF.Models
 {
@@ -8,6 +12,7 @@ namespace SqlAnimatedWPF.Models
         public string ApplicationName { get; set; }
         public string UserName { get; set; }
         public string Comment { get; set; }
+
         public CommentDto(int id, string applicationName, string userName, string comment)
         {
             Id = id;
@@ -15,9 +20,16 @@ namespace SqlAnimatedWPF.Models
             UserName = userName;
             Comment = comment;
         }
+        public CommentDto(string applicationName, string userName, string comment)
+        {
+            ApplicationName = applicationName;
+            UserName = userName;
+            Comment = comment;
+        }
+
         public override string ToString()
         {
-            return this.Id + ", " + this.ApplicationName + ", " + this.UserName + ", " + this.Comment;
+            return Id.ToString() + ", " + ApplicationName.ToString() + ", " + UserName.ToString() + ", " + Comment.ToString();
         }
     }
 }

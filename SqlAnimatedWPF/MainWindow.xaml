@@ -7,6 +7,65 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <ListView Margin="10" Name="test"></ListView>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="6*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <ListBox Name="list" Grid.Row="0" Width="Auto" Margin="5,5,5,5"></ListBox>
+            <Button Grid.Row="1" FontSize="20" Content="Delete" VerticalAlignment="Top" Click="onClickDelete" Margin="266,0,10,0"/>
+        </Grid>
+        <Grid Width="Auto" Height="Auto" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"></RowDefinition>
+                <RowDefinition Height="3*"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Content="Application name" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top"/>
+                <TextBox Grid.Row="0" Name="appNameInsert" HorizontalAlignment="Center"  TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Margin="0,8,0,0"/>
+
+                <Label Grid.Row="1" Margin="5,5,0,0" Content="User name" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <TextBox Grid.Row="1" Name="userNameInsert" HorizontalAlignment="Center"  TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Margin="0,8,0,0"/>
+
+                <Label Grid.Row="2" Margin="5,5,0,0" Content="Comment" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <TextBox Grid.Row="2" Name="commentInsert" HorizontalAlignment="Center"  TextWrapping="Wrap" VerticalAlignment="Center" Width="200"/>
+
+                <Button Grid.Row="3" Margin="10,0,0,0" FontSize="20" Content="Insert" HorizontalAlignment="Left" VerticalAlignment="Center" Click="onClickInsert" Height="30" Width="67"/>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Content="Id" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top"/>
+                <TextBox Grid.Row="0" Name="idUpdate" PreviewTextInput="NumberValidationTextBox" HorizontalAlignment="Center"  TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Margin="0,8,0,0" TextChanged="updateBtn_TextChanged"/>
+
+                <Label Grid.Row="1" Content="Application name" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top"/>
+                <TextBox Grid.Row="1" Name="applicationNameUpdate" HorizontalAlignment="Center"  TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Margin="0,8,0,0" IsEnabled="False"/>
+
+                <Label Grid.Row="2" Content="User name" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top"/>
+                <TextBox Grid.Row="2" Name="userNameUpdate" HorizontalAlignment="Center"  TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Margin="0,8,0,0" IsEnabled="False"/>
+
+                <Label Grid.Row="3" Content="Comment" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top"/>
+                <TextBox Grid.Row="3" Name="commentUpdate" HorizontalAlignment="Center"  TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Margin="0,8,0,0" IsEnabled="False"/>
+
+                <Button Name="updateButton" Grid.Row="4" Margin="10,0,0,0" FontSize="20" Content="Update" HorizontalAlignment="Left" VerticalAlignment="Center" Click="onClickUpdate" Height="30" Width="67" IsEnabled="False"/>
+            </Grid>
+        </Grid>
+
     </Grid>
 </Window>

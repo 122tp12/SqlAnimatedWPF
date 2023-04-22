@@ -14,11 +14,22 @@ namespace SqlAnimatedWPF
         public MainViewModel()
         {
             model = new SqLiteModel();
-            model.Insert("app", "name", "comment");
         }
         public List<CommentDto> SelectAll()
         {
-            return model.selectAll();
+            return model.SelectAll();
+        }
+        public int Insert(CommentDto insertObj)
+        {
+            return model.Insert(insertObj);
+        }
+        public int Update(CommentDto updateObj)
+        {
+            return model.Update(updateObj);
+        }
+        public int Delete(int id)
+        {
+            return model.Delete(id);
         }
         public void Close()
         {
