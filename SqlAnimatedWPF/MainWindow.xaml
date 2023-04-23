@@ -6,6 +6,39 @@
         xmlns:local="clr-namespace:SqlAnimatedWPF"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <ControlTemplate TargetType="Button" x:Key="testButtonTemplate2">
+            <Border Name="RootElement">
+                <Border.Background>
+                    <SolidColorBrush x:Name="BorderBrush" Color="#282a36"/>
+                    
+                </Border.Background>
+
+                <Grid Margin="0.5" >
+                    <Grid.Background>
+                        <SolidColorBrush x:Name="ButtonBackground" Color="#FFFFB86C"/>
+                    </Grid.Background>
+
+                    <ContentPresenter TextBlock.Foreground="#282a36" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                </Grid>
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal"/>
+                        <VisualState x:Name="MouseOver">
+                            <Storyboard>
+                                <ColorAnimation Duration="0:0:0.25" Storyboard.TargetName="ButtonBackground" Storyboard.TargetProperty="Color" To="#ff5555"/>
+                            </Storyboard>
+                        </VisualState>
+                        <VisualState x:Name="Pressed">
+                            <Storyboard>
+                                <ColorAnimation Duration="0:0:0.1" Storyboard.TargetName="ButtonBackground" Storyboard.TargetProperty="Color" To="#bd93f9"/>
+                            </Storyboard>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+            </Border>
+        </ControlTemplate>
+    </Window.Resources>
     <Grid Background="#FF282A36">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5*"/>
@@ -17,7 +50,7 @@
                 <RowDefinition Height="1*"></RowDefinition>
             </Grid.RowDefinitions>
             <ListBox Name="list" Grid.Row="0" Width="Auto" Margin="5,5,5,5" SelectionMode="Multiple" Background="#FFF8F8F2" Foreground="#FF282A36"/>
-            <Button FontSize="20" Grid.Row="1" Content="Delete" VerticalAlignment="Top" Click="onClickDelete" Grid.RowSpan="2" Background="#FFFFB86C" Foreground="#FF282A36" Margin="220,0,10,0"/>
+            <Button Template="{StaticResource testButtonTemplate2}" Margin="220,0,10,5" Grid.Row="1" Content="Delete" Click="onClickDelete"/>
         </Grid>
         <Grid Width="Auto" Height="Auto" Grid.Column="1" Margin="10,10,10,10" Background="#FF44475A">
             <Grid.RowDefinitions>
@@ -45,7 +78,7 @@
                 <Label Grid.Row="2" Grid.Column="0" Margin="5,5,0,0" Content="Comment" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FF282A36"/>
                 <TextBox Grid.Row="2" Grid.Column="1" Name="commentInsert" HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top" Width="283" Background="#FFF8F8F2" Margin="2,9,0,0" Foreground="#FF282A36"/>
 
-                <Button Grid.Row="3" Grid.Column="1" FontSize="14" Content="Insert" HorizontalAlignment="Left" VerticalAlignment="Center" Click="onClickInsert" Height="25" Width="59" Background="#FFFFB86C" Foreground="#FF282A36" Margin="2,0,0,0"/>
+                <Button Grid.Row="3" Grid.Column="1" Template="{StaticResource testButtonTemplate2}" FontSize="14" Content="Insert" Click="onClickInsert"  Margin="5,5,220,5"/>
             </Grid>
             <Grid Grid.Row="1" Background="#FF6272A4" Margin="5,5,5,5">
                 <Grid.ColumnDefinitions>
@@ -71,7 +104,7 @@
                 <Label Grid.Row="3" Grid.Column="0" Content="Comment" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" Foreground="#FF282A36"/>
                 <TextBox Grid.Row="3" Name="commentUpdate" HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top" Width="283" Margin="2,8,0,0" IsEnabled="False" Grid.Column="1" Background="#FFF8F8F2" Foreground="#FF282A36" FontSize="14"/>
 
-                <Button Name="updateButton" Grid.Row="4" Margin="2,0,0,0" FontSize="14" Content="Update" HorizontalAlignment="Left" VerticalAlignment="Center" Click="onClickUpdate" Height="25" Width="75" IsEnabled="False" Grid.Column="1" Background="#FFFFB86C" Foreground="#FF282A36"/>
+                <Button Name="updateButton" Grid.Row="4" Template="{StaticResource testButtonTemplate2}" Margin="2,0,0,0" FontSize="14" Content="Update" HorizontalAlignment="Left" VerticalAlignment="Center" Click="onClickUpdate" Height="25" Width="75" IsEnabled="False" Grid.Column="1" Opacity="0.5"/>
             </Grid>
             <Label Name="notification" Grid.Row="2" Foreground="#FF282A36" Content="Failed" Margin="15" FontSize="22" HorizontalContentAlignment="Center" MouseEnter="notification_MouseEnter" Visibility="Hidden" Background="#FFF8F8F2"/>
         </Grid>

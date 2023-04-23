@@ -106,6 +106,7 @@ namespace SqlAnimatedWPF
             commentUpdate.Text = "";
 
             updateButton.IsEnabled = false;
+            updateButton.Opacity = 0.5;
         }
         private void updateBtn_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -131,6 +132,7 @@ namespace SqlAnimatedWPF
                     commentUpdate.Text = currComment.Comment;
 
                     updateButton.IsEnabled = true;
+                    updateButton.Opacity = 1;
                     return;
                 }
             }
